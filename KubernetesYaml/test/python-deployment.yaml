@@ -26,7 +26,7 @@ spec:
         - containerPort: 5001
         resources:
           requests:
-            cpu: 200m
+            cpu: 100m
             memory: 0.5Gi
         livenessProbe:
           httpGet:

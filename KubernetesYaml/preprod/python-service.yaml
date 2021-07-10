@@ -3,13 +3,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: flask-service
-  namespace: prod
+  namespace: preprod
 spec:
   ports:
   - port: 5001
     protocol: TCP
     targetPort: 5001
-    nodePort: 30082
+    nodePort: 30080
   selector:
     app: myapp
   type: NodePort

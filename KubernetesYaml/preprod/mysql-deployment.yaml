@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mydb
-  namespace: prod
+  namespace: preprod
   labels:
     app: mydb
 spec:
@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
       - name: secret-key
       containers:
-      - name: mysql-prod
+      - name: mysql-preprod
         image: mysql
         imagePullPolicy: Always
         env:
@@ -35,8 +35,8 @@ spec:
         - containerPort: 3306
         resources:
           requests:
-            cpu: 100m
-            memory: 0.3Gi
+            cpu: 200m
+            memory: 0.5Gi
         livenessProbe:
           exec:
             command: ["mysqladmin", "ping"]
@@ -44,12 +44,12 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 5
         volumeMounts:
-        - name: mydb-pv-volume-prod
+        - name: mydb-pv-volume-preprod
           mountPath: /var/lib/mysql
         - name: mysql-initdb
           mountPath: /docker-entrypoint-initdb.d
       volumes:
-      - name: mydb-pv-volume-prod
+      - name: mydb-pv-volume-preprod
         persistentVolumeClaim:
           claimName: mydb-pvc
       - name: mysql-initdb

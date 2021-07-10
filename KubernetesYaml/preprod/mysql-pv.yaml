@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mydb-pv-volume-prod
-  namespace: prod
+  name: mydb-pv-volume-preprod
+  namespace: preprod
 spec:
   capacity:
-    storage: 0.1Gi
+    storage: 0.5Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/opt/mydb-prod"
+    path: "/opt/mydb-preprod"

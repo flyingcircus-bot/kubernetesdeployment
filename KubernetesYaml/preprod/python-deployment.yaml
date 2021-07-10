@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp-deploy
-  namespace: prod
+  namespace: preprod
   labels:
     app: myapp
 spec:
@@ -19,15 +19,15 @@ spec:
       imagePullSecrets:
       - name: secret-key
       containers:
-      - name: myapp-flask-prod
+      - name: myapp-flask-preprod
         image: flyingcircusbot/myflask:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5001
         resources:
           requests:
-            cpu: 100m
-            memory: 0.3Gi
+            cpu: 200m
+            memory: 0.5Gi
         livenessProbe:
           httpGet:
             path: /
