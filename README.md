@@ -40,4 +40,4 @@ CMD python app.py
 
 Deneme23456tjhfsdrdtgadfg
 gdsfg
- 
+ gdsfg
